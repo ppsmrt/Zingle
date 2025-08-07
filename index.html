@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zingle - Secure Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="login-screen">
+      <h2>Zingle</h2>
+      <input type="text" id="phone-number" placeholder="+1 234 567 890" />
+      <div id="recaptcha-container"></div>
+      <button id="send-otp">Send OTP</button>
+
+      <input type="text" id="otp-code" placeholder="Enter OTP" style="display:none;" />
+      <button id="verify-otp" style="display:none;">Verify</button>
+    </div>
+
+    <div id="chat-screen" style="display:none;">
+      <header>Zingle Secure Chat</header>
+      <div id="chat-window"></div>
+      <div id="input-area">
+        <input type="text" id="message-input" placeholder="Type your message..." />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
