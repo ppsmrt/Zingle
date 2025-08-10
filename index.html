@@ -7,29 +7,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Smooth card interaction */
     .product-card {
-      transition: all 0.3s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
     .product-image {
-      transition: transform 0.3s ease;
-    }
-    .product-card:hover .product-image {
-      transform: scale(1.04);
-    }
-    /* Android store style: subtle background, rounded */
-    .product-container {
-      background: #fafafa;
-      border-radius: 1rem;
-      padding: 1rem;
+      aspect-ratio: 1/1;
+      object-fit: cover;
     }
   </style>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
   <!-- Header -->
   <header class="bg-violet-700 text-white shadow">
@@ -43,74 +34,56 @@
     </div>
   </header>
 
-  <!-- Hero Banner -->
-  <section class="bg-cover bg-center h-64 flex items-center justify-center text-white" style="background-image: url('https://via.placeholder.com/1200x400');">
-    <h2 class="text-4xl font-bold bg-black bg-opacity-50 px-6 py-3 rounded-lg">Welcome to Sweets & Sarees</h2>
-  </section>
+  <!-- Sort & Filter Section -->
+  <div class="container mx-auto px-4 py-4 flex flex-wrap gap-4 justify-between items-center">
+    <!-- Sort by Price -->
+    <div>
+      <label for="sortPrice" class="mr-2 font-medium">Sort by Price:</label>
+      <select id="sortPrice" class="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-violet-500">
+        <option value="low-high">Low to High</option>
+        <option value="high-low">High to Low</option>
+      </select>
+    </div>
 
-  <!-- Products Section -->
-  <main class="container mx-auto px-4 py-10 flex-grow">
-    <h2 class="text-3xl font-bold mb-6">Our Products</h2>
+    <!-- Placeholder for future Filter -->
+    <div>
+      <button class="border rounded-lg p-2 bg-gray-100 hover:bg-gray-200 text-sm">Filter (Coming Soon)</button>
+    </div>
+  </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+  <!-- Products Grid -->
+  <main class="container mx-auto px-4 py-6 flex-grow">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       
       <!-- Product Card -->
-      <div class="product-container product-card shadow-sm">
-        <img src="https://via.placeholder.com/300x250" alt="Delicious Sweet" class="w-full h-40 object-cover rounded-lg product-image">
-        <h3 class="mt-3 text-base font-semibold">Delicious Sweet</h3>
-        <div class="flex items-center justify-between mt-2">
-          <span class="text-green-600 font-bold">$12</span>
-          <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
-            <i class="fa fa-shopping-cart"></i>
-          </button>
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+        <img src="https://via.placeholder.com/300" alt="Product" class="w-full product-image">
+        <div class="p-4 flex flex-col justify-between h-[120px]">
+          <h3 class="text-lg font-semibold truncate">Delicious Sweet Box</h3>
+          <div class="flex justify-between items-center mt-2">
+            <span class="text-green-600 font-bold">$12.99</span>
+            <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
+              <i class="fa fa-shopping-cart"></i>
+            </button>
+          </div>
         </div>
       </div>
 
-      <!-- Product Card -->
-      <div class="product-container product-card shadow-sm">
-        <img src="https://via.placeholder.com/300x250" alt="Traditional Saree" class="w-full h-40 object-cover rounded-lg product-image">
-        <h3 class="mt-3 text-base font-semibold">Traditional Saree</h3>
-        <div class="flex items-center justify-between mt-2">
-          <span class="text-green-600 font-bold">$40</span>
-          <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
-            <i class="fa fa-shopping-cart"></i>
-          </button>
+      <!-- Repeat for more products -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+        <img src="https://via.placeholder.com/300" alt="Product" class="w-full product-image">
+        <div class="p-4 flex flex-col justify-between h-[120px]">
+          <h3 class="text-lg font-semibold truncate">Elegant Silk Saree</h3>
+          <div class="flex justify-between items-center mt-2">
+            <span class="text-green-600 font-bold">$45.00</span>
+            <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
+              <i class="fa fa-shopping-cart"></i>
+            </button>
+          </div>
         </div>
       </div>
 
-      <!-- Product Card -->
-      <div class="product-container product-card shadow-sm">
-        <img src="https://via.placeholder.com/300x250" alt="Special Gift Box" class="w-full h-40 object-cover rounded-lg product-image">
-        <h3 class="mt-3 text-base font-semibold">Special Gift Box</h3>
-        <div class="flex items-center justify-between mt-2">
-          <span class="text-green-600 font-bold">$25</span>
-          <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
-            <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Product Card -->
-      <div class="product-container product-card shadow-sm">
-        <img src="https://via.placeholder.com/300x250" alt="Festival Combo" class="w-full h-40 object-cover rounded-lg product-image">
-        <h3 class="mt-3 text-base font-semibold">Festival Combo</h3>
-        <div class="flex items-center justify-between mt-2">
-          <span class="text-green-600 font-bold">$30</span>
-          <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
-            <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-violet-700 text-white py-4 mt-8">
-    <div class="container mx-auto text-center">
-      &copy; 2025 Sweets & Sarees. All Rights Reserved.
-    </div>
-  </footer>
-
-</body>
-</html>
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+        <img src="https://via.placeholder.com/300" alt="Product" class="w-full product-image">
+        <div class="p-4 flex flex-col justify-between h-[120px]">
+          <h3 class="text-lg font-semibold
