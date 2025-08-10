@@ -6,78 +6,72 @@
   <title>Sweets & Sarees Store</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 text-gray-800">
 
   <!-- Header -->
   <header class="bg-white shadow">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Sweets & Sarees</h1>
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-pink-600">Sweets & Sarees</h1>
       <nav class="space-x-4">
-        <a href="#" class="hover:text-violet-600">Home</a>
-        <a href="#" class="hover:text-violet-600">Shop</a>
-        <a href="#" class="hover:text-violet-600">Contact</a>
+        <a href="#" class="text-gray-600 hover:text-pink-600">Home</a>
+        <a href="#" class="text-gray-600 hover:text-pink-600">Shop</a>
+        <a href="#" class="text-gray-600 hover:text-pink-600">Cart</a>
+        <a href="#" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">Login</a>
       </nav>
     </div>
   </header>
 
-  <!-- Product Grid -->
-  <main class="container mx-auto px-4 py-10">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      
+  <!-- Products Section -->
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       <!-- Sweet 1 -->
-      <div class="bg-white shadow rounded-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1626197133497-97ed9869965e?auto=format&fit=crop&w=800&q=80" alt="Gulab Jamun" class="w-full h-56 object-cover">
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1606313564200-8858e4b2c86e" alt="Motichoor Ladoo" class="w-full h-48 object-cover">
         <div class="p-4">
-          <h3 class="font-semibold text-lg">Gulab Jamun</h3>
-          <button class="mt-3 px-4 py-2 bg-violet-600 text-white rounded hover:bg-violet-700">Add to Cart</button>
+          <h2 class="text-lg font-semibold">Motichoor Ladoo</h2>
+          <button class="mt-3 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 w-full">Add to Cart</button>
         </div>
       </div>
-
       <!-- Sweet 2 -->
-      <div class="bg-white shadow rounded-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1603898037225-46f6eac29b3e?auto=format&fit=crop&w=800&q=80" alt="Rasgulla" class="w-full h-56 object-cover">
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1606813902916-f02a7f25c0f0" alt="Rasgulla" class="w-full h-48 object-cover">
         <div class="p-4">
-          <h3 class="font-semibold text-lg">Rasgulla</h3>
-          <button class="mt-3 px-4 py-2 bg-violet-600 text-white rounded hover:bg-violet-700">Add to Cart</button>
+          <h2 class="text-lg font-semibold">Rasgulla</h2>
+          <button class="mt-3 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 w-full">Add to Cart</button>
         </div>
       </div>
-
       <!-- Sweet 3 -->
-      <div class="bg-white shadow rounded-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1620912189868-579e62d8f474?auto=format&fit=crop&w=800&q=80" alt="Ladoo" class="w-full h-56 object-cover">
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1625220194771-7e804b54828a" alt="Kaju Katli" class="w-full h-48 object-cover">
         <div class="p-4">
-          <h3 class="font-semibold text-lg">Motichoor Ladoo</h3>
-          <button class="mt-3 px-4 py-2 bg-violet-600 text-white rounded hover:bg-violet-700">Add to Cart</button>
+          <h2 class="text-lg font-semibold">Kaju Katli</h2>
+          <button class="mt-3 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 w-full">Add to Cart</button>
         </div>
       </div>
-
       <!-- Saree 1 -->
-      <div class="bg-white shadow rounded-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1616990660234-f36d510a4ac0?auto=format&fit=crop&w=800&q=80" alt="Silk Saree" class="w-full h-56 object-cover">
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1610030469980-d2b32a918f73" alt="Silk Saree" class="w-full h-48 object-cover">
         <div class="p-4">
-          <h3 class="font-semibold text-lg">Red Silk Saree</h3>
-          <button class="mt-3 px-4 py-2 bg-violet-600 text-white rounded hover:bg-violet-700">Add to Cart</button>
+          <h2 class="text-lg font-semibold">Silk Saree</h2>
+          <button class="mt-3 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 w-full">Add to Cart</button>
         </div>
       </div>
-
       <!-- Saree 2 -->
-      <div class="bg-white shadow rounded-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1621203277780-fd74535c50a2?auto=format&fit=crop&w=800&q=80" alt="Banarasi Saree" class="w-full h-56 object-cover">
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1584531904700-2c0d8b5d5d0c" alt="Banarasi Saree" class="w-full h-48 object-cover">
         <div class="p-4">
-          <h3 class="font-semibold text-lg">Banarasi Saree</h3>
-          <button class="mt-3 px-4 py-2 bg-violet-600 text-white rounded hover:bg-violet-700">Add to Cart</button>
+          <h2 class="text-lg font-semibold">Banarasi Saree</h2>
+          <button class="mt-3 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 w-full">Add to Cart</button>
         </div>
       </div>
-
       <!-- Saree 3 -->
-      <div class="bg-white shadow rounded-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1617052266821-4c4f3f94a515?auto=format&fit=crop&w=800&q=80" alt="Cotton Saree" class="w-full h-56 object-cover">
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1596464716121-6f3bdb0596ab" alt="Cotton Saree" class="w-full h-48 object-cover">
         <div class="p-4">
-          <h3 class="font-semibold text-lg">Cotton Saree</h3>
-          <button class="mt-3 px-4 py-2 bg-violet-600 text-white rounded hover:bg-violet-700">Add to Cart</button>
+          <h2 class="text-lg font-semibold">Cotton Saree</h2>
+          <button class="mt-3 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 w-full">Add to Cart</button>
         </div>
       </div>
-
     </div>
   </main>
 
