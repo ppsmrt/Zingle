@@ -44,15 +44,102 @@
       </div>
     </div>
 
-    <!-- Product Management -->
-    <div class="bg-white p-6 rounded-lg shadow-lg">
-      <h3 class="text-2xl font-bold mb-4">Add New Product</h3>
-      <form class="space-y-4">
-        <input type="text" placeholder="Product Name" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
-        <input type="number" placeholder="Price" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
-        <input type="file" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
-        <button type="submit" class="bg-violet-700 text-white px-6 py-3 rounded-lg hover:bg-violet-800">Add Product</button>
-      </form>
+    <!-- Products Grid -->
+    <h3 class="text-2xl font-bold mb-4">Products</h3>
+    <div class="grid grid-cols-3 gap-6">
+      <!-- Product Card -->
+      <div class="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
+        <div class="flex-[8]">
+          <img src="https://via.placeholder.com/300x200" alt="Product 1" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-[1] p-2 text-center font-semibold">
+          Product 1
+        </div>
+        <div class="flex-[1] flex justify-between items-center px-3 pb-3">
+          <span class="text-lg font-bold text-gray-800">$20</span>
+          <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Repeat for more products -->
+      <div class="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
+        <div class="flex-[8]">
+          <img src="https://via.placeholder.com/300x200" alt="Product 2" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-[1] p-2 text-center font-semibold">
+          Product 2
+        </div>
+        <div class="flex-[1] flex justify-between items-center px-3 pb-3">
+          <span class="text-lg font-bold text-gray-800">$35</span>
+          <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
+        <div class="flex-[8]">
+          <img src="https://via.placeholder.com/300x200" alt="Product 3" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-[1] p-2 text-center font-semibold">
+          Product 3
+        </div>
+        <div class="flex-[1] flex justify-between items-center px-3 pb-3">
+          <span class="text-lg font-bold text-gray-800">$15</span>
+          <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Add up to 12 demo products -->
+      <div class="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
+        <div class="flex-[8]">
+          <img src="https://via.placeholder.com/300x200" alt="Product 4" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-[1] p-2 text-center font-semibold">
+          Product 4
+        </div>
+        <div class="flex-[1] flex justify-between items-center px-3 pb-3">
+          <span class="text-lg font-bold text-gray-800">$18</span>
+          <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
+        <div class="flex-[8]">
+          <img src="https://via.placeholder.com/300x200" alt="Product 5" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-[1] p-2 text-center font-semibold">
+          Product 5
+        </div>
+        <div class="flex-[1] flex justify-between items-center px-3 pb-3">
+          <span class="text-lg font-bold text-gray-800">$40</span>
+          <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
+        <div class="flex-[8]">
+          <img src="https://via.placeholder.com/300x200" alt="Product 6" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-[1] p-2 text-center font-semibold">
+          Product 6
+        </div>
+        <div class="flex-[1] flex justify-between items-center px-3 pb-3">
+          <span class="text-lg font-bold text-gray-800">$22</span>
+          <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+
     </div>
   </main>
 
