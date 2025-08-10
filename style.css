@@ -1,0 +1,113 @@
+:root{
+  --accent: #7c3aed;
+  --muted: #6b7280;
+}
+
+/* Product grid: force 3 columns at all sizes (as requested) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.25rem;
+}
+
+/* Product card modern / app-like */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(16,24,40,0.12);
+}
+
+/* image area occupies ~80% of card height */
+.card .thumb {
+  height: 240px;
+  width: 100%;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+.card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ensures image fits and fills card (no distortion) */
+  display: block;
+  transition: transform 350ms ease;
+}
+.card:hover .thumb img {
+  transform: scale(1.04);
+}
+
+/* lower content (name + controls) ~20% */
+.card .meta {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* product name text - constrained area */
+.card .meta .name {
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: #111827;
+  flex: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* price + add-to-cart button */
+.price-cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: #16a34a; /* green */
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 700;
+  min-width: 92px;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+.price-cart .price {
+  font-size: 0.95rem;
+}
+.price-cart .fa-shopping-cart {
+  font-size: 0.95rem;
+}
+
+/* wishlist (heart) button placed top-right overlay */
+.card .wishlist {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 999px;
+  padding: 8px;
+  color: #ef4444;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: transform 120ms ease, background 120ms ease;
+}
+.card .wishlist.active {
+  background: #ffeaea;
+  transform: scale(1.05);
+}
+
+/* small responsive tweak just in case */
+@media (max-width: 900px) {
+  .card .thumb { height: 220px; }
+}
+@media (max-width: 640px) {
+  .card .thumb { height: 200px; }
+}
