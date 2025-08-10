@@ -3,106 +3,187 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sweets & Sarees Store</title>
+  <title>Sweets & Sarees</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .product-card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+    .product-card h3 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .product-card button {
+      background-color: #9333ea;
+      color: white;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+    }
+    .product-card button:hover {
+      background-color: #7e22ce;
+    }
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 500px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 text-gray-800">
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Sweets & Sarees</h1>
-      <div>
-        <a href="#" class="px-4 py-2 text-gray-700">Home</a>
-        <a href="#" class="px-4 py-2 text-gray-700">Login</a>
-      </div>
+  <!-- Header -->
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-purple-700">Sweets & Sarees</h1>
+      <nav class="space-x-4">
+        <a href="#" class="hover:text-purple-600">Home</a>
+        <a href="#" class="hover:text-purple-600">Shop</a>
+        <a href="#" class="hover:text-purple-600">Contact</a>
+        <a href="login.html" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Login</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <!-- Products Grid -->
-  <section class="max-w-7xl mx-auto px-4 py-10">
-    <div class="grid grid-cols-3 gap-6">
-      <!-- Product Card -->
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1617196039897-28f6b4f2d0d1?w=500" alt="Sweet" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Gulab Jamun</h3>
-        <p class="text-gray-600">₹250 / box</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1600697964700-fc39e07e1e28?w=500" alt="Sweet" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Rasgulla</h3>
-        <p class="text-gray-600">₹220 / box</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1607582278043-3ec1cf0133b8?w=500" alt="Sweet" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Kaju Katli</h3>
-        <p class="text-gray-600">₹450 / box</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
+  <!-- Product Grid -->
+  <main class="container mx-auto px-4 py-8">
+    <div class="product-grid">
+
+      <!-- 6 sweets -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1601315576604-88a75f28f0d1" alt="Laddu">
+        <div class="product-card-content">
+          <h3>Laddu</h3>
+          <button>Add to Cart</button>
+        </div>
       </div>
 
-      <!-- Sarees -->
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1624280433540-719d11b5c5d3?w=500" alt="Saree" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Silk Saree</h3>
-        <p class="text-gray-600">₹3,500</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1596464716127-cbc2b6da0a4f?w=500" alt="Saree" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Cotton Saree</h3>
-        <p class="text-gray-600">₹1,200</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1625231250100-8c365a7c22e7?w=500" alt="Saree" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Banarasi Saree</h3>
-        <p class="text-gray-600">₹5,000</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1630409342741-8f2a7ecf0bb0" alt="Jalebi">
+        <div class="product-card-content">
+          <h3>Jalebi</h3>
+          <button>Add to Cart</button>
+        </div>
       </div>
 
-      <!-- More sweets -->
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1579613832125-5e78f8d7b2ac?w=500" alt="Sweet" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Ladoo</h3>
-        <p class="text-gray-600">₹180 / box</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1608530276340-7f7dedf864b0?w=500" alt="Sweet" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Mysore Pak</h3>
-        <p class="text-gray-600">₹300 / box</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
-      </div>
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1620374643155-b7cf7c5284f5?w=500" alt="Sweet" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Halwa</h3>
-        <p class="text-gray-600">₹200 / box</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1606813898754-9022ff2dfe6a" alt="Barfi">
+        <div class="product-card-content">
+          <h3>Barfi</h3>
+          <button>Add to Cart</button>
+        </div>
       </div>
 
-      <!-- More sarees -->
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1624280433591-5e832c3a9f6a?w=500" alt="Saree" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Kanchipuram Saree</h3>
-        <p class="text-gray-600">₹4,200</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1668503818726-8e3c8c1105ad" alt="Rasgulla">
+        <div class="product-card-content">
+          <h3>Rasgulla</h3>
+          <button>Add to Cart</button>
+        </div>
       </div>
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1596464716254-fcb82e20f3fc?w=500" alt="Saree" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Chiffon Saree</h3>
-        <p class="text-gray-600">₹1,800</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1625755907586-9894e058b4e1" alt="Kaju Katli">
+        <div class="product-card-content">
+          <h3>Kaju Katli</h3>
+          <button>Add to Cart</button>
+        </div>
       </div>
-      <div class="bg-white rounded-lg shadow p-4">
-        <img src="https://images.unsplash.com/photo-1624280433610-998ee8b5afcf?w=500" alt="Saree" class="w-full h-48 object-cover rounded">
-        <h3 class="mt-4 font-semibold text-lg">Organza Saree</h3>
-        <p class="text-gray-600">₹2,500</p>
-        <button class="mt-3 px-4 py-2 bg-purple-600 text-white rounded">Add to Cart</button>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1625755869444-f1f9a6e7f2a2" alt="Peda">
+        <div class="product-card-content">
+          <h3>Peda</h3>
+          <button>Add to Cart</button>
+        </div>
       </div>
+
+      <!-- 6 sarees -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1622888464391-b6c6fb87c995" alt="Silk Saree Red">
+        <div class="product-card-content">
+          <h3>Silk Saree - Red</h3>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1622888464175-3f3e6f47fd7e" alt="Silk Saree Green">
+        <div class="product-card-content">
+          <h3>Silk Saree - Green</h3>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1622888464052-e9d54a46e88d" alt="Silk Saree Blue">
+        <div class="product-card-content">
+          <h3>Silk Saree - Blue</h3>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1622888464011-7bde86b2ec52" alt="Cotton Saree Yellow">
+        <div class="product-card-content">
+          <h3>Cotton Saree - Yellow</h3>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1622888463942-537454b6ca68" alt="Kanchipuram Saree Pink">
+        <div class="product-card-content">
+          <h3>Kanchipuram Saree - Pink</h3>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1622888463815-b86bb1ddbc54" alt="Banarasi Saree Gold">
+        <div class="product-card-content">
+          <h3>Banarasi Saree - Gold</h3>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-8">
+    <div class="container mx-auto px-4 py-4 text-center text-gray-500">
+      &copy; 2025 Sweets & Sarees. All rights reserved.
+    </div>
+  </footer>
 
 </body>
 </html>
