@@ -13,53 +13,60 @@
       gap: 1.5rem;
     }
     .product-card {
-      display: flex;
-      flex-direction: column;
       background: white;
-      border-radius: 0.5rem;
+      border-radius: 0.75rem;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      height: 100%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      cursor: pointer;
     }
-    .product-card img {
+    .product-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .product-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 80%;
+    }
+    .product-image-wrapper img {
       width: 100%;
-      height: 80%; /* 80% of card height */
+      height: 100%;
       object-fit: cover;
-      flex: 0 0 auto;
+      transition: transform 0.4s ease;
     }
-    .product-card-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 0.5rem;
-      height: 20%;
+    .product-card:hover img {
+      transform: scale(1.05);
     }
-    .product-name {
-      flex: 0 0 10%;
-      font-size: 1rem;
-      font-weight: bold;
-      margin-bottom: 0.25rem;
+    .product-info {
+      padding: 0.75rem;
       text-align: center;
+      font-weight: bold;
+      font-size: 1rem;
+      height: 10%;
     }
-    .product-card-footer {
-      flex: 0 0 10%;
+    .product-footer {
       display: flex;
       justify-content: center;
+      padding: 0.75rem;
+      height: 10%;
     }
     .price-cart-btn {
-      background-color: #16a34a; /* green */
+      background-color: #16a34a;
       color: white;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
       padding: 0.5rem 0.75rem;
-      border-radius: 0.375rem;
+      border-radius: 9999px;
       font-weight: bold;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
     .price-cart-btn:hover {
       background-color: #15803d;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -81,147 +88,146 @@
 
       <!-- Product -->
       <div class="product-card">
-        <img src="https://i.ibb.co/zNQhZVt/laddu.jpg" alt="Laddu">
-        <div class="product-card-content">
-          <div class="product-name">Laddu</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $10 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/zNQhZVt/laddu.jpg" alt="Laddu">
+        </div>
+        <div class="product-info">Laddu</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $10 <i class="fa fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://i.ibb.co/gFg1t0d/jalebi.jpg" alt="Jalebi">
-        <div class="product-card-content">
-          <div class="product-name">Jalebi</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $12 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/gFg1t0d/jalebi.jpg" alt="Jalebi">
+        </div>
+        <div class="product-info">Jalebi</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $12 <i class="fa fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://i.ibb.co/W3Jstqk/gulab-jamun.jpg" alt="Gulab Jamun">
-        <div class="product-card-content">
-          <div class="product-name">Gulab Jamun</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $15 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/W3Jstqk/gulab-jamun.jpg" alt="Gulab Jamun">
         </div>
-      </div>
-
-      <!-- Add remaining products with same structure -->
-      <div class="product-card">
-        <img src="https://i.ibb.co/nPgYFS3/barfi.jpg" alt="Barfi">
-        <div class="product-card-content">
-          <div class="product-name">Barfi</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $9 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-info">Gulab Jamun</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $15 <i class="fa fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://i.ibb.co/zJ9prjB/rasgulla.jpg" alt="Rasgulla">
-        <div class="product-card-content">
-          <div class="product-name">Rasgulla</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $14 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/nPgYFS3/barfi.jpg" alt="Barfi">
+        </div>
+        <div class="product-info">Barfi</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $9 <i class="fa fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://i.ibb.co/mXh6Ck7/soan-papdi.jpg" alt="Soan Papdi">
-        <div class="product-card-content">
-          <div class="product-name">Soan Papdi</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $11 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/zJ9prjB/rasgulla.jpg" alt="Rasgulla">
+        </div>
+        <div class="product-info">Rasgulla</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $14 <i class="fa fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://i.ibb.co/NF3tYmt/saree-red.jpg" alt="Red Silk Saree">
-        <div class="product-card-content">
-          <div class="product-name">Red Silk Saree</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $80 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/mXh6Ck7/soan-papdi.jpg" alt="Soan Papdi">
+        </div>
+        <div class="product-info">Soan Papdi</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $11 <i class="fa fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://i.ibb.co/YBQ3yV3/saree-blue.jpg" alt="Blue Cotton Saree">
-        <div class="product-card-content">
-          <div class="product-name">Blue Cotton Saree</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $65 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/NF3tYmt/saree-red.jpg" alt="Red Silk Saree">
+        </div>
+        <div class="product-info">Red Silk Saree</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $80 <i class="fa fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://i.ibb.co/D1M9Xsh/saree-green.jpg" alt="Green Designer Saree">
-        <div class="product-card-content">
-          <div class="product-name">Green Designer Saree</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $95 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/YBQ3yV3/saree-blue.jpg" alt="Blue Cotton Saree">
+        </div>
+        <div class="product-info">Blue Cotton Saree</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $65 <i class="fa fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://i.ibb.co/sRz9y3w/saree-yellow.jpg" alt="Yellow Georgette Saree">
-        <div class="product-card-content">
-          <div class="product-name">Yellow Georgette Saree</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $70 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/D1M9Xsh/saree-green.jpg" alt="Green Designer Saree">
+        </div>
+        <div class="product-info">Green Designer Saree</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $95 <i class="fa fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://i.ibb.co/jTfyyYx/saree-pink.jpg" alt="Pink Kanjivaram Saree">
-        <div class="product-card-content">
-          <div class="product-name">Pink Kanjivaram Saree</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $120 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/sRz9y3w/saree-yellow.jpg" alt="Yellow Georgette Saree">
+        </div>
+        <div class="product-info">Yellow Georgette Saree</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $70 <i class="fa fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://i.ibb.co/TL5WvwQ/saree-white.jpg" alt="White Banarasi Saree">
-        <div class="product-card-content">
-          <div class="product-name">White Banarasi Saree</div>
-          <div class="product-card-footer">
-            <button class="price-cart-btn">
-              $110 <i class="fa fa-shopping-cart"></i>
-            </button>
-          </div>
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/jTfyyYx/saree-pink.jpg" alt="Pink Kanjivaram Saree">
+        </div>
+        <div class="product-info">Pink Kanjivaram Saree</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $120 <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image-wrapper">
+          <img src="https://i.ibb.co/TL5WvwQ/saree-white.jpg" alt="White Banarasi Saree">
+        </div>
+        <div class="product-info">White Banarasi Saree</div>
+        <div class="product-footer">
+          <button class="price-cart-btn">
+            $110 <i class="fa fa-shopping-cart"></i>
+          </button>
         </div>
       </div>
 
