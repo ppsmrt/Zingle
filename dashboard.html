@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Sweets & Sarees</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50">
+
+  <!-- Header -->
+  <header class="bg-violet-700 text-white shadow">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Sweets & Sarees</h1>
+      <nav class="space-x-4">
+        <a href="index.html" class="hover:text-gray-200">Home</a>
+        <a href="dashboard.html" class="hover:text-gray-200">Dashboard</a>
+        <a href="login.html" class="hover:text-gray-200">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Dashboard Content -->
+  <main class="flex-grow container mx-auto px-4 py-6">
+    <h2 class="text-3xl font-bold mb-6">Welcome to Your Dashboard</h2>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+        <i class="fa fa-box text-violet-700 text-3xl mb-2"></i>
+        <h3 class="text-lg font-semibold">Total Products</h3>
+        <p class="text-2xl font-bold">12</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+        <i class="fa fa-dollar-sign text-violet-700 text-3xl mb-2"></i>
+        <h3 class="text-lg font-semibold">Total Earnings</h3>
+        <p class="text-2xl font-bold">$1,250</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+        <i class="fa fa-shopping-cart text-violet-700 text-3xl mb-2"></i>
+        <h3 class="text-lg font-semibold">Orders</h3>
+        <p class="text-2xl font-bold">34</p>
+      </div>
+    </div>
+
+    <!-- Product Management -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+      <h3 class="text-2xl font-bold mb-4">Add New Product</h3>
+      <form class="space-y-4">
+        <input type="text" placeholder="Product Name" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
+        <input type="number" placeholder="Price" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
+        <input type="file" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
+        <button type="submit" class="bg-violet-700 text-white px-6 py-3 rounded-lg hover:bg-violet-800">Add Product</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-violet-700 text-white py-4 mt-8">
+    <div class="container mx-auto text-center">
+      &copy; 2025 Sweets & Sarees. All Rights Reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
