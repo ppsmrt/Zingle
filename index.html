@@ -2,242 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sweets & Sarees</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweets & Sarees - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
     .product-card {
-      background: white;
-      border-radius: 0.75rem;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      cursor: pointer;
     }
     .product-card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
-    .product-image-wrapper {
-      position: relative;
-      overflow: hidden;
-      height: 80%;
-    }
-    .product-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .product-image {
       transition: transform 0.4s ease;
     }
-    .product-card:hover img {
-      transform: scale(1.05);
-    }
-    .product-info {
-      padding: 0.75rem;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1rem;
-      height: 10%;
-    }
-    .product-footer {
-      display: flex;
-      justify-content: center;
-      padding: 0.75rem;
-      height: 10%;
-    }
-    .price-cart-btn {
-      background-color: #16a34a;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.5rem 0.75rem;
-      border-radius: 9999px;
-      font-weight: bold;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    .price-cart-btn:hover {
-      background-color: #15803d;
+    .product-card:hover .product-image {
       transform: scale(1.05);
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="flex flex-col min-h-screen bg-gray-50">
 
   <!-- Header -->
-  <header class="bg-white shadow-sm">
+  <header class="bg-violet-700 text-white shadow">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold text-purple-700">Sweet</h1>
+      <h1 class="text-2xl font-bold">Sweets & Sarees</h1>
       <nav class="space-x-4">
-        <a href="login.html" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Login</a>
+        <a href="index.html" class="hover:text-gray-200">Home</a>
+        <a href="dashboard.html" class="hover:text-gray-200">Dashboard</a>
+        <a href="login.html" class="hover:text-gray-200">Login</a>
       </nav>
     </div>
   </header>
 
-  <!-- Product Grid -->
-  <main class="container mx-auto px-4 py-8">
-    <div class="product-grid">
+  <!-- Hero / Banner -->
+  <section class="bg-cover bg-center h-64 flex items-center justify-center text-white" style="background-image: url('https://via.placeholder.com/1200x400');">
+    <h2 class="text-4xl font-bold bg-black bg-opacity-50 px-6 py-3 rounded-lg">Welcome to Sweets & Sarees</h2>
+  </section>
 
-      <!-- Product -->
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/zNQhZVt/laddu.jpg" alt="Laddu">
-        </div>
-        <div class="product-info">Laddu</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $10 <i class="fa fa-shopping-cart"></i>
-          </button>
+  <!-- Product Section -->
+  <main class="container mx-auto px-4 py-10 flex-grow">
+    <h2 class="text-3xl font-bold mb-8">Our Products</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Product Card -->
+      <div class="bg-white rounded-xl overflow-hidden product-card">
+        <img src="https://via.placeholder.com/400x300" alt="Product 1" class="w-full h-64 object-cover product-image">
+        <div class="p-4 flex flex-col justify-between h-[120px]">
+          <h3 class="text-lg font-semibold">Delicious Sweet</h3>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">$12</span>
+            <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
+              <i class="fa fa-shopping-cart"></i>
+            </button>
+          </div>
         </div>
       </div>
 
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/gFg1t0d/jalebi.jpg" alt="Jalebi">
-        </div>
-        <div class="product-info">Jalebi</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $12 <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/W3Jstqk/gulab-jamun.jpg" alt="Gulab Jamun">
-        </div>
-        <div class="product-info">Gulab Jamun</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $15 <i class="fa fa-shopping-cart"></i>
-          </button>
+      <!-- Product Card -->
+      <div class="bg-white rounded-xl overflow-hidden product-card">
+        <img src="https://via.placeholder.com/400x300" alt="Product 2" class="w-full h-64 object-cover product-image">
+        <div class="p-4 flex flex-col justify-between h-[120px]">
+          <h3 class="text-lg font-semibold">Traditional Saree</h3>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">$40</span>
+            <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
+              <i class="fa fa-shopping-cart"></i>
+            </button>
+          </div>
         </div>
       </div>
 
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/nPgYFS3/barfi.jpg" alt="Barfi">
-        </div>
-        <div class="product-info">Barfi</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $9 <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/zJ9prjB/rasgulla.jpg" alt="Rasgulla">
-        </div>
-        <div class="product-info">Rasgulla</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $14 <i class="fa fa-shopping-cart"></i>
-          </button>
+      <!-- Product Card -->
+      <div class="bg-white rounded-xl overflow-hidden product-card">
+        <img src="https://via.placeholder.com/400x300" alt="Product 3" class="w-full h-64 object-cover product-image">
+        <div class="p-4 flex flex-col justify-between h-[120px]">
+          <h3 class="text-lg font-semibold">Special Gift Box</h3>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">$25</span>
+            <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
+              <i class="fa fa-shopping-cart"></i>
+            </button>
+          </div>
         </div>
       </div>
-
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/mXh6Ck7/soan-papdi.jpg" alt="Soan Papdi">
-        </div>
-        <div class="product-info">Soan Papdi</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $11 <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/NF3tYmt/saree-red.jpg" alt="Red Silk Saree">
-        </div>
-        <div class="product-info">Red Silk Saree</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $80 <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/YBQ3yV3/saree-blue.jpg" alt="Blue Cotton Saree">
-        </div>
-        <div class="product-info">Blue Cotton Saree</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $65 <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/D1M9Xsh/saree-green.jpg" alt="Green Designer Saree">
-        </div>
-        <div class="product-info">Green Designer Saree</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $95 <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/sRz9y3w/saree-yellow.jpg" alt="Yellow Georgette Saree">
-        </div>
-        <div class="product-info">Yellow Georgette Saree</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $70 <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/jTfyyYx/saree-pink.jpg" alt="Pink Kanjivaram Saree">
-        </div>
-        <div class="product-info">Pink Kanjivaram Saree</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $120 <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image-wrapper">
-          <img src="https://i.ibb.co/TL5WvwQ/saree-white.jpg" alt="White Banarasi Saree">
-        </div>
-        <div class="product-info">White Banarasi Saree</div>
-        <div class="product-footer">
-          <button class="price-cart-btn">
-            $110 <i class="fa fa-shopping-cart"></i>
-          </button>
-        </div>
-      </div>
-
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t mt-8">
-    <div class="container mx-auto px-4 py-4 text-center text-gray-500">
-      &copy; 2025 Sweets & Sarees. All rights reserved.
+  <footer class="bg-violet-700 text-white py-4 mt-8">
+    <div class="container mx-auto text-center">
+      &copy; 2025 Sweets & Sarees. All Rights Reserved.
     </div>
   </footer>
 
