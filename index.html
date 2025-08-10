@@ -2,25 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sweets & Sarees - Home</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .product-card {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Enable smooth horizontal scrolling on mobile */
+    .scroll-snap-x {
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    .product-image {
-      aspect-ratio: 1/1;
-      object-fit: cover;
+    .scroll-snap-item {
+      scroll-snap-align: start;
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen bg-gray-50">
 
   <!-- Header -->
   <header class="bg-violet-700 text-white shadow">
@@ -34,56 +31,132 @@
     </div>
   </header>
 
-  <!-- Sort & Filter Section -->
-  <div class="container mx-auto px-4 py-4 flex flex-wrap gap-4 justify-between items-center">
-    <!-- Sort by Price -->
+  <!-- Sort & Filter -->
+  <div class="container mx-auto px-4 py-6 flex justify-between items-center bg-white rounded-lg shadow mb-6">
     <div>
-      <label for="sortPrice" class="mr-2 font-medium">Sort by Price:</label>
-      <select id="sortPrice" class="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-violet-500">
-        <option value="low-high">Low to High</option>
-        <option value="high-low">High to Low</option>
+      <label for="sort" class="mr-2 font-medium">Sort by:</label>
+      <select id="sort" class="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
+        <option value="low-high">Price: Low to High</option>
+        <option value="high-low">Price: High to Low</option>
       </select>
     </div>
-
-    <!-- Placeholder for future Filter -->
     <div>
-      <button class="border rounded-lg p-2 bg-gray-100 hover:bg-gray-200 text-sm">Filter (Coming Soon)</button>
+      <!-- Filter Placeholder -->
+      <button class="p-2 bg-violet-700 text-white rounded-lg hover:bg-violet-800">
+        <i class="fa fa-filter"></i> Filter
+      </button>
     </div>
   </div>
 
-  <!-- Products Grid -->
-  <main class="container mx-auto px-4 py-6 flex-grow">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+  <!-- Product Section -->
+  <main class="container mx-auto px-4 pb-10">
+    
+    <!-- Mobile: Horizontal scroll -->
+    <div class="flex space-x-4 overflow-x-auto md:hidden scroll-snap-x pb-4">
       
-      <!-- Product Card -->
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
-        <img src="https://via.placeholder.com/300" alt="Product" class="w-full product-image">
-        <div class="p-4 flex flex-col justify-between h-[120px]">
-          <h3 class="text-lg font-semibold truncate">Delicious Sweet Box</h3>
-          <div class="flex justify-between items-center mt-2">
-            <span class="text-green-600 font-bold">$12.99</span>
-            <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
-              <i class="fa fa-shopping-cart"></i>
+      <div class="min-w-[250px] bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 scroll-snap-item">
+        <div class="h-64 overflow-hidden">
+          <img src="https://via.placeholder.com/300x300" alt="Product" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300">
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-2">Product Name</h3>
+          <div class="flex justify-between items-center">
+            <span class="text-green-600 font-bold text-lg">$25</span>
+            <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+              <i class="fa fa-cart-plus"></i>
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Repeat for more products -->
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
-        <img src="https://via.placeholder.com/300" alt="Product" class="w-full product-image">
-        <div class="p-4 flex flex-col justify-between h-[120px]">
-          <h3 class="text-lg font-semibold truncate">Elegant Silk Saree</h3>
-          <div class="flex justify-between items-center mt-2">
-            <span class="text-green-600 font-bold">$45.00</span>
-            <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg">
-              <i class="fa fa-shopping-cart"></i>
+      <div class="min-w-[250px] bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 scroll-snap-item">
+        <div class="h-64 overflow-hidden">
+          <img src="https://via.placeholder.com/300x300" alt="Product" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300">
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-2">Another Product</h3>
+          <div class="flex justify-between items-center">
+            <span class="text-green-600 font-bold text-lg">$40</span>
+            <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+              <i class="fa fa-cart-plus"></i>
             </button>
           </div>
         </div>
       </div>
 
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
-        <img src="https://via.placeholder.com/300" alt="Product" class="w-full product-image">
-        <div class="p-4 flex flex-col justify-between h-[120px]">
-          <h3 class="text-lg font-semibold
+      <div class="min-w-[250px] bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 scroll-snap-item">
+        <div class="h-64 overflow-hidden">
+          <img src="https://via.placeholder.com/300x300" alt="Product" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300">
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-2">Third Product</h3>
+          <div class="flex justify-between items-center">
+            <span class="text-green-600 font-bold text-lg">$55</span>
+            <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+              <i class="fa fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Desktop: Grid layout -->
+    <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+        <div class="h-64 overflow-hidden">
+          <img src="https://via.placeholder.com/300x300" alt="Product" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300">
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-2">Product Name</h3>
+          <div class="flex justify-between items-center">
+            <span class="text-green-600 font-bold text-lg">$25</span>
+            <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+              <i class="fa fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+        <div class="h-64 overflow-hidden">
+          <img src="https://via.placeholder.com/300x300" alt="Product" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300">
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-2">Another Product</h3>
+          <div class="flex justify-between items-center">
+            <span class="text-green-600 font-bold text-lg">$40</span>
+            <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+              <i class="fa fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+        <div class="h-64 overflow-hidden">
+          <img src="https://via.placeholder.com/300x300" alt="Product" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300">
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-2">Third Product</h3>
+          <div class="flex justify-between items-center">
+            <span class="text-green-600 font-bold text-lg">$55</span>
+            <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+              <i class="fa fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-violet-700 text-white py-4 mt-8">
+    <div class="container mx-auto text-center">
+      &copy; 2025 Sweets & Sarees. All Rights Reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
