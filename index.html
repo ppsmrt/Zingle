@@ -1,33 +1,459 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zingle - Secure Chat</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SweetSaree Store — Demo</title>
+
+  <!-- Tailwind via CDN (Play CDN for quick prototypes) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Small theme customizations -->
+  <style>
+    :root{
+      --accent: #7c3aed; /* violet-600 */
+      --muted: #6b7280;
+    }
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.55));
+      backdrop-filter: blur(6px);
+    }
+    /* subtle card focus state */
+    .card:focus-within, .card:hover{ transform: translateY(-6px); box-shadow: 0 12px 30px rgba(10,10,10,0.08); }
+    /* 3-card style emphasis: larger central card (on wide screens) */
+    @media(min-width:1024px){
+      .product-grid .card:nth-child(2){ grid-row: span 2; }
+    }
+  </style>
 </head>
-<body>
-  <div id="app">
-    <div id="login-screen">
-      <h2>Zingle</h2>
-      <input type="text" id="phone-number" placeholder="+1 234 567 890" />
-      <div id="recaptcha-container"></div>
-      <button id="send-otp">Send OTP</button>
+<body class="bg-gray-50 text-gray-900 antialiased">
 
-      <input type="text" id="otp-code" placeholder="Enter OTP" style="display:none;" />
-      <button id="verify-otp" style="display:none;">Verify</button>
+  <!-- ===== Header ===== -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="flex items-end gap-2">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center font-extrabold text-white" style="background:linear-gradient(135deg,var(--accent),#5b21b6)">SS</div>
+          <div>
+            <div class="text-xl font-extrabold" style="color:var(--accent)">SweetSaree</div>
+            <div class="text-xs text-gray-500 -mt-1">Sweets • Sarees • Curated</div>
+          </div>
+        </div>
+
+        <nav class="hidden md:flex gap-4 text-sm text-gray-600 ml-6">
+          <button data-nav="home" class="hover:text-violet-600">Home</button>
+          <button data-nav="sweets" class="hover:text-violet-600">Sweets</button>
+          <button data-nav="sarees" class="hover:text-violet-600">Sarees</button>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="cartBtn" class="px-3 py-2 border rounded-md text-sm">Cart <span id="cartCount" class="ml-1 font-medium">0</span></button>
+
+        <div id="authBox" class="flex items-center gap-2">
+          <button id="loginBtn" class="px-3 py-2 text-sm">Login</button>
+          <button id="signupBtn" class="px-3 py-2 bg-[color:var(--accent)] text-white rounded-md text-sm">Sign up</button>
+        </div>
+
+        <div id="userBox" class="hidden items-center gap-3">
+          <div class="text-sm">Hi, <strong id="userName">User</strong></div>
+          <button id="dashboardBtn" class="px-3 py-2 bg-[color:var(--accent)] text-white rounded-md text-sm">Dashboard</button>
+        </div>
+      </div>
     </div>
+  </header>
 
-    <div id="chat-screen" style="display:none;">
-      <header>Zingle Secure Chat</header>
-      <div id="chat-window"></div>
-      <div id="input-area">
-        <input type="text" id="message-input" placeholder="Type your message..." />
-        <button id="send-btn">Send</button>
+  <!-- ===== Main content area ===== -->
+  <main id="app" class="max-w-7xl mx-auto px-6 py-10">
+
+    <!-- Home / Hero -->
+    <section id="homeView">
+      <div class="rounded-2xl p-8 glass shadow-sm">
+        <div class="flex flex-col lg:flex-row items-center gap-8">
+          <div class="flex-1">
+            <h1 class="text-4xl font-bold">Sweets & Sarees — Curated with care</h1>
+            <p class="text-gray-600 mt-2">A modern shopfront for traditional delights. Browse premium sarees and handcrafted sweets.</p>
+
+            <div class="mt-6 flex gap-3">
+              <input id="searchInput" placeholder="Search Mysore Pak, Kanjivaram..." class="px-4 py-3 rounded-lg border w-full max-w-md"/>
+              <button id="exploreBtn" class="px-5 py-3 bg-[color:var(--accent)] text-white rounded-lg">Explore</button>
+            </div>
+          </div>
+
+          <div class="w-full max-w-sm">
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3 bg-white rounded-xl shadow"><img src="https://images.unsplash.com/photo-1604908177522-8a0a3c6f2b2b?q=80&w=800&auto=format&fit=crop" alt="sweets" class="h-28 w-full object-cover rounded-md"/></div>
+              <div class="p-3 bg-white rounded-xl shadow"><img src="https://images.unsplash.com/photo-1503342452485-86f7b7aa6b0d?q=80&w=800&auto=format&fit=crop" alt="saree" class="h-28 w-full object-cover rounded-md"/></div>
+              <div class="p-3 bg-white rounded-xl shadow col-span-2"><img src="https://images.unsplash.com/photo-1612197522778-3c52f8b5f3c1?q=80&w=1200&auto=format&fit=crop" alt="box" class="h-36 w-full object-cover rounded-md"/></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured products heading -->
+      <div class="mt-8 flex items-center justify-between">
+        <h2 class="text-2xl font-semibold">Featured products</h2>
+        <div class="text-sm text-gray-500">3-card grid · Fresh picks</div>
+      </div>
+
+      <!-- Product grid (3-card style) -->
+      <section class="mt-6">
+        <div id="productGrid" class="product-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Product cards injected by JS -->
+        </div>
+      </section>
+    </section>
+
+    <!-- Dashboard (hidden by default) -->
+    <section id="dashboardView" class="hidden">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-semibold">Dashboard</h2>
+        <div class="text-sm text-gray-500">Welcome back, <span id="dashUserName">Seller</span></div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded-xl shadow">
+          <div class="text-sm text-gray-500">Revenue</div>
+          <div id="statRevenue" class="mt-2 text-2xl font-semibold">₹0</div>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <div class="text-sm text-gray-500">Orders</div>
+          <div id="statOrders" class="mt-2 text-2xl font-semibold">0</div>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <div class="text-sm text-gray-500">Products</div>
+          <div id="statProducts" class="mt-2 text-2xl font-semibold">0</div>
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-white p-4 rounded-xl shadow">
+          <h3 class="font-semibold mb-3">Product catalogue</h3>
+          <div id="catalogList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- product rows -->
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h3 class="font-semibold mb-3">Add product</h3>
+          <form id="addProductForm" class="space-y-3">
+            <input id="pTitle" placeholder="Title" class="w-full px-3 py-2 border rounded" required/>
+            <input id="pPrice" placeholder="Price (₹)" type="number" class="w-full px-3 py-2 border rounded" required/>
+            <select id="pCategory" class="w-full px-3 py-2 border rounded">
+              <option>Sarees</option>
+              <option>Sweets</option>
+            </select>
+            <input id="pImg" placeholder="Image URL (optional)" class="w-full px-3 py-2 border rounded"/>
+            <button type="submit" class="w-full px-4 py-2 bg-[color:var(--accent)] text-white rounded">Add product</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t bg-white mt-12">
+    <div class="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-600 flex justify-between">
+      <div>© <span id="yearNow"></span> SweetSareeStore</div>
+      <div>Modern store UI • Demo</div>
+    </div>
+  </footer>
+
+  <!-- ===== Auth Modal (Login / Signup with Demo) ===== -->
+  <div id="authModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-2xl w-full max-w-md p-6">
+      <div class="flex items-center justify-between">
+        <h3 id="authTitle" class="text-xl font-semibold">Login</h3>
+        <button id="authClose" class="text-gray-500">✕</button>
+      </div>
+
+      <div class="mt-4 space-y-3">
+        <input id="authName" placeholder="Full name (signup only)" class="w-full px-4 py-3 border rounded-lg hidden"/>
+        <input id="authEmail" placeholder="Email" class="w-full px-4 py-3 border rounded-lg"/>
+        <input id="authPass" placeholder="Password" type="password" class="w-full px-4 py-3 border rounded-lg"/>
+
+        <div class="flex gap-2">
+          <button id="authSubmit" class="flex-1 px-4 py-3 bg-[color:var(--accent)] text-white rounded-lg">Login</button>
+          <button id="authDemo" class="px-4 py-3 border rounded-lg">Demo</button>
+        </div>
+
+        <div class="text-xs text-gray-500 text-center">Demo login opens a seller dashboard with sample data.</div>
       </div>
     </div>
   </div>
 
-  <script type="module" src="app.js"></script>
+  <!-- ===== Templates & small scripts ===== -->
+  <script>
+    // ===== Sample data =====
+    const SAMPLE_PRODUCTS = [
+      // Sweets
+      { id: "s1", category: "Sweets", title: "Mysore Pak", price: 120, img: "https://images.unsplash.com/photo-1604908177522-8a0a3c6f2b2b?q=80&w=800&auto=format&fit=crop" },
+      { id: "s2", category: "Sweets", title: "Rasgulla (6pcs)", price: 220, img: "https://images.unsplash.com/photo-1612197522778-3c52f8b5f3c1?q=80&w=800&auto=format&fit=crop" },
+      { id: "s3", category: "Sweets", title: "Kaju Katli Box", price: 450, img: "https://images.unsplash.com/photo-1585238342028-7d9a4c7a1f0d?q=80&w=800&auto=format&fit=crop" },
+
+      // Sarees
+      { id: "r1", category: "Sarees", title: "Kanjivaram Silk - Red", price: 9500, img: "https://images.unsplash.com/photo-1503342452485-86f7b7aa6b0d?q=80&w=800&auto=format&fit=crop" },
+      { id: "r2", category: "Sarees", title: "Chiffon Printed - Teal", price: 2499, img: "https://images.unsplash.com/photo-1521120098171-3b2c3b6862d7?q=80&w=800&auto=format&fit=crop" },
+      { id: "r3", category: "Sarees", title: "Banarasi - Gold", price: 18800, img: "https://images.unsplash.com/photo-1520975919795-4f9ad2d6f3f1?q=80&w=800&auto=format&fit=crop" }
+    ];
+
+    // Simulated orders for dashboard stats
+    const SAMPLE_ORDERS = [
+      { id: 1, total: 3499, items: 2 },
+      { id: 2, total: 120, items: 1 },
+      { id: 3, total: 9500, items: 1 }
+    ];
+
+    // ===== State =====
+    let products = JSON.parse(JSON.stringify(SAMPLE_PRODUCTS));
+    let user = null;
+    let cart = [];
+
+    // ===== Utilities =====
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    // ===== DOM references =====
+    const productGrid = $('#productGrid');
+    const searchInput = $('#searchInput');
+    const cartCount = $('#cartCount');
+    const authModal = $('#authModal');
+    const authTitle = $('#authTitle');
+    const authName = $('#authName');
+    const authEmail = $('#authEmail');
+    const authPass = $('#authPass');
+    const authSubmit = $('#authSubmit');
+    const authDemo = $('#authDemo');
+    const authClose = $('#authClose');
+
+    const loginBtn = $('#loginBtn');
+    const signupBtn = $('#signupBtn');
+    const dashboardBtn = $('#dashboardBtn');
+    const authBox = $('#authBox');
+    const userBox = $('#userBox');
+    const userNameEl = $('#userName');
+    const dashUserName = $('#dashUserName');
+    const homeView = $('#homeView');
+    const dashboardView = $('#dashboardView');
+    const statRevenue = $('#statRevenue');
+    const statOrders = $('#statOrders');
+    const statProducts = $('#statProducts');
+    const catalogList = $('#catalogList');
+    const addProductForm = $('#addProductForm');
+    const yearNow = $('#yearNow');
+
+    yearNow.textContent = new Date().getFullYear();
+
+    // ===== Render functions =====
+    function renderProducts(list = products) {
+      productGrid.innerHTML = '';
+      // show default 3-card style: on lg, central card appears taller (handled by CSS)
+      list.forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'card bg-white rounded-2xl shadow-md overflow-hidden transform transition p-0';
+        card.innerHTML = \`
+          <div class="h-44 bg-gray-100"><img src="\${p.img}" alt="\${p.title}" class="w-full h-full object-cover"/></div>
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold">\${p.title}</h3>
+              <div class="text-sm text-gray-500">\${p.category}</div>
+            </div>
+            <p class="mt-3 text-lg font-bold">₹\${nComma(p.price)}</p>
+            <div class="mt-4 flex items-center justify-between">
+              <button class="px-3 py-2 border rounded-lg text-sm add-btn" data-id="\${p.id}">Add</button>
+              <button class="px-3 py-2 bg-[color:var(--accent)] text-white rounded-lg text-sm buy-btn" data-id="\${p.id}">Buy now</button>
+            </div>
+          </div>
+        \`;
+        productGrid.appendChild(card);
+      });
+
+      // attach listeners
+      $$('.add-btn').forEach(btn => btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        const p = products.find(x => x.id === id);
+        cart.push(p);
+        updateCart();
+        showToast('\${p.title} added to cart');
+      }));
+
+      $$('.buy-btn').forEach(btn => btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        const p = products.find(x => x.id === id);
+        // for demo: add to cart & show checkout simulated
+        cart.push(p);
+        updateCart();
+        showToast('Checkout simulated for ' + p.title);
+      }));
+    }
+
+    function renderDashboard() {
+      statProducts.textContent = products.length;
+      const revenue = SAMPLE_ORDERS.reduce((s,o) => s + o.total, 0);
+      statRevenue.textContent = '₹' + nComma(revenue);
+      statOrders.textContent = SAMPLE_ORDERS.length;
+
+      // catalog list
+      catalogList.innerHTML = '';
+      products.forEach(p => {
+        const row = document.createElement('div');
+        row.className = 'p-3 border rounded-lg flex items-center gap-3';
+        row.innerHTML = \`
+          <img src="\${p.img}" alt="\${p.title}" class="w-20 h-20 object-cover rounded-md"/>
+          <div>
+            <div class="font-semibold">\${p.title}</div>
+            <div class="text-sm text-gray-500">₹\${nComma(p.price)} • \${p.category}</div>
+          </div>
+        \`;
+        catalogList.appendChild(row);
+      });
+    }
+
+    function nComma(n){ return Number(n).toLocaleString('en-IN'); }
+
+    function updateCart(){
+      cartCount.textContent = cart.length;
+    }
+
+    function showToast(msg){
+      const t = document.createElement('div');
+      t.className = 'fixed right-6 bottom-6 bg-black/80 text-white px-4 py-2 rounded-md shadow';
+      t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(()=> t.remove(), 2200);
+    }
+
+    // ===== Auth modal handling (login / signup / demo) =====
+    let authMode = 'login'; // or 'signup'
+    function openAuth(mode='login'){
+      authMode = mode;
+      authTitle.textContent = mode === 'login' ? 'Login' : 'Create account';
+      authName.classList.toggle('hidden', mode === 'login');
+      authModal.classList.remove('hidden');
+      authEmail.value = '';
+      authPass.value = '';
+      authName.value = '';
+    }
+
+    function closeAuth(){
+      authModal.classList.add('hidden');
+    }
+
+    loginBtn.addEventListener('click', ()=> openAuth('login'));
+    signupBtn.addEventListener('click', ()=> openAuth('signup'));
+    authClose.addEventListener('click', closeAuth);
+
+    // Demo login: opens seller dashboard with demo data
+    authDemo.addEventListener('click', ()=> {
+      user = { name: 'Demo Seller', email: 'demo@store.com', role: 'seller' };
+      onLogin();
+      closeAuth();
+      showToast('Demo seller signed in');
+    });
+
+    // Realistic "submit" (mock)
+    authSubmit.addEventListener('click', ()=>{
+      const em = authEmail.value.trim() || 'user@store.com';
+      const nm = (authMode === 'signup' ? (authName.value.trim() || 'New User') : (em.split('@')[0]));
+      user = { name: nm, email: em, role: 'customer' };
+      closeAuth();
+      onLogin();
+      showToast('Signed in as ' + user.name);
+    });
+
+    function onLogin(){
+      // UI updates
+      authBox.classList.add('hidden');
+      userBox.classList.remove('hidden');
+      userNameEl.textContent = user.name;
+      dashUserName.textContent = user.name;
+      // show dashboard if seller or always for demo
+      if(user.role === 'seller' || user.email === 'demo@store.com'){
+        showDashboard();
+      }
+    }
+
+    // ===== Navigation & dashboard toggles =====
+    function showDashboard(){
+      homeView.classList.add('hidden');
+      dashboardView.classList.remove('hidden');
+      renderDashboard();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function showHome(){
+      dashboardView.classList.add('hidden');
+      homeView.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    dashboardBtn.addEventListener('click', showDashboard);
+    $$('.product-grid nav'); // (noop)
+
+    // small nav handlers — go to home by default
+    $$('.product-grid'); // (noop)
+    document.querySelectorAll('button[data-nav]').forEach(b => {
+      b.addEventListener('click', (e) => {
+        const n = e.target.dataset.nav;
+        // simple filtering for quick nav
+        if(n === 'home'){ showHome(); renderProducts(); return; }
+        if(n === 'sweets'){ showHome(); renderProducts(products.filter(p => p.category === 'Sweets')); return; }
+        if(n === 'sarees'){ showHome(); renderProducts(products.filter(p => p.category === 'Sarees')); return; }
+      });
+    });
+
+    // search & explore
+    searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      if(!q) renderProducts();
+      else renderProducts(products.filter(p => (p.title + ' ' + p.category).toLowerCase().includes(q)));
+    });
+    $('#exploreBtn').addEventListener('click', ()=> {
+      const q = searchInput.value.trim().toLowerCase();
+      if(!q) { renderProducts(); showToast('Showing all featured products'); return; }
+      const filtered = products.filter(p => (p.title + ' ' + p.category).toLowerCase().includes(q));
+      renderProducts(filtered);
+      showToast('Showing ' + filtered.length + ' result(s)');
+    });
+
+    // Add product (from dashboard)
+    addProductForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const title = $('#pTitle').value.trim();
+      const price = Number($('#pPrice').value);
+      const category = $('#pCategory').value;
+      const img = $('#pImg').value.trim() || 'https://images.unsplash.com/photo-1520975919795-4f9ad2d6f3f1?q=80&w=800&auto=format&fit=crop';
+      if(!title || !price) { alert('Title and price are required'); return; }
+
+      const newP = { id: 'p' + Date.now(), title, price, category, img };
+      products.unshift(newP); // add to start
+      renderDashboard();
+      renderProducts(); // refresh homepage grid
+      addProductForm.reset();
+      showToast('Product added');
+    });
+
+    // ===== On load =====
+    (function init(){
+      renderProducts();
+      updateCart();
+      yearNow.textContent = new Date().getFullYear();
+
+      // demo: if you want to auto-open demo login in dev, uncomment:
+      // user = {name: 'Demo Seller', email:'demo@store.com', role:'seller'}; onLogin();
+
+      // Close auth modal on background click
+      authModal.addEventListener('click', (e) => {
+        if(e.target === authModal) closeAuth();
+      });
+
+      // small keyboard shortcut: D = demo login, H = home, G = dashboard (for quick testing)
+      document.addEventListener('keydown', (e) => {
+        if(e.key.toLowerCase() === 'd'){ authDemo.click(); }
+        if(e.key.toLowerCase() === 'h'){ showHome(); }
+        if(e.key.toLowerCase() === 'g'){ if(user) showDashboard(); else openAuth('login'); }
+      });
+    })();
+  </script>
 </body>
 </html>
